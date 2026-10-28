@@ -48,7 +48,7 @@
   --shadow:0 1px 2px rgb(36 26 31 / .06),0 24px 50px -26px rgb(36 26 31 / .34);
   --f-display:"Instrument Serif",Georgia,"Times New Roman",serif;
   --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --t-hero:clamp(2.7rem,5.6vw,4.9rem);
+  --t-hero:clamp(2.8rem,6vw,5.4rem);
   --t-2xl:clamp(2.3rem,4.6vw,3.6rem);
 }
 @media (prefers-color-scheme: dark){
@@ -122,26 +122,33 @@ h1 em,h2 em{color:var(--accent)}
 /* ---------- Portada ---------- */
 .hero{position:relative;padding-block:clamp(36px,6vw,84px) clamp(64px,8vw,112px);overflow-x:clip}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 45% at 88% 8%,color-mix(in oklab,var(--accent) 11%,transparent),transparent 70%);pointer-events:none}
-.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,64px);align-items:center}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-areas:"copy cta";column-gap:clamp(32px,6vw,80px);row-gap:32px;align-items:end}
+.hero-copy{grid-area:copy}
+.hero-cta{grid-area:cta;position:relative;z-index:0}
+.hero-cta::before{content:"";position:absolute;z-index:-1;right:-10%;bottom:-24%;width:72%;aspect-ratio:4/5;border-radius:999px 999px 0 0;background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 16%,transparent),transparent 85%)}
 .hero-line{font-size:1.15rem;color:var(--ink-2);max-width:34ch}
-.index{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.index-k{margin-top:24px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+.index{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .index a{display:inline-flex;align-items:center;gap:8px;padding:.4em .95em .4em .45em;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none;font-size:.85rem;font-weight:700;color:var(--ink-2);transition:border-color .2s,color .2s}
 .index a span{display:inline-grid;place-items:center;min-width:2em;height:2em;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.7rem;font-weight:800}
 .index a:hover{border-color:var(--accent);color:var(--ink)}
-.offer{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:16px 16px 16px 20px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);max-width:31rem}
+.offer{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:16px 16px 16px 20px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);max-width:31rem}
 .offer-tag{flex-basis:100%;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--accent)}
 .offer-price{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1}
 .offer-price small{font-size:.75rem;font-weight:800;letter-spacing:.08em;color:var(--muted);margin-left:6px}
 .offer .btn{margin-left:auto}
-@media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;grid-template-areas:"copy" "cta"}}
 
-.hero-visual{position:relative;z-index:0;min-width:0}
-.hero-visual::before{content:"";position:absolute;z-index:-1;right:-5%;top:-9%;width:58%;aspect-ratio:4/5;border-radius:999px 999px 0 0;background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 18%,transparent),transparent 85%)}
-.def{position:relative;margin:20px 0 0 clamp(0px,5vw,48px);max-width:31rem;padding:16px 20px;border-radius:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
-.def::before{content:"";position:absolute;top:-7px;left:38px;width:12px;height:12px;background:var(--card);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
-.def-k{font-family:var(--f-display);font-style:italic;font-size:1.4rem;line-height:1.1;color:var(--accent);margin-bottom:.25em}
-.def p:last-child{font-size:.95rem;color:var(--ink-2)}
-.def b{color:var(--ink)}
+/* ---------- Todo junto: dashboard ---------- */
+.dash-demo{position:relative;z-index:0;min-width:0}
+.dash-demo::before{content:"";position:absolute;z-index:-1;right:-5%;top:-9%;width:58%;aspect-ratio:4/5;border-radius:999px 999px 0 0;background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 18%,transparent),transparent 85%)}
+.vs{margin-top:24px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.vs-k{font-family:var(--f-display);font-style:italic;font-size:1.3rem;line-height:1.15;color:var(--accent);margin-bottom:.4em}
+.vs dl{margin:0}
+.vs dl div{display:grid;gap:1px;padding:9px 0;border-top:1px solid var(--line)}
+.vs dt{font-size:.9rem;font-weight:800}
+.vs dd{margin:0;font-size:.92rem;color:var(--ink-2)}
+.vs dd b{color:var(--accent)}
 
 /* ---------- Maquetas: piezas comunes ---------- */
 .dots{display:inline-flex;gap:6px}
@@ -248,6 +255,7 @@ html.js .cc-lab{animation:fade .4s .6s backwards}
 .blk.alt .note{background:var(--paper)}
 .note-k{font-family:var(--f-display);font-style:italic;font-size:1.3rem;line-height:1.15;color:var(--accent);margin-bottom:.3em}
 .note p:last-child{font-size:.94rem;color:var(--ink-2)}
+.note a{color:var(--accent);font-weight:700}
 .fine{margin-top:16px;font-size:.84rem;color:var(--muted)}
 .wide-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(28px,4vw,44px)}
 .wide-head .feats{margin-top:0}
@@ -534,63 +542,22 @@ html.js .rv.in{opacity:1;transform:none}
       <p class="eyebrow ld" style="--i:0">Propuesta web · Clínica estética</p>
       <h1 id="t-hero" class="ld" style="--i:1">Toda su clínica, en un solo <em>panel.</em></h1>
       <p class="hero-line ld" style="--i:2">Cinco módulos conectados que su equipo maneja desde un mismo lugar.</p>
-      <ol class="index ld" style="--i:3" aria-label="Los cinco módulos">
+    </div>
+
+    <div class="hero-cta">
+      <div class="offer ld" style="--i:3">
+        <p class="offer-tag">Precio especial · Clientes de Jhoana</p>
+        <p class="offer-price">$5.000.000<small>COP</small></p>
+        <a class="btn" href="#inversion">Ver inversión</a>
+      </div>
+      <p class="index-k ld" style="--i:4" id="t-index">Incluye 5 módulos</p>
+      <ol class="index ld" style="--i:4" aria-labelledby="t-index">
         <li><a href="#web"><span>01</span>Sitio web</a></li>
         <li><a href="#panel"><span>02</span>Panel de administración</a></li>
         <li><a href="#tienda"><span>03</span>Tienda en línea</a></li>
         <li><a href="#analisis"><span>04</span>Panel de análisis</a></li>
         <li><a href="#crm"><span>05</span>CRM</a></li>
       </ol>
-      <div class="offer ld" style="--i:4">
-        <p class="offer-tag">Precio especial · Clientes de Jhoana</p>
-        <p class="offer-price">$5.000.000<small>COP</small></p>
-        <a class="btn" href="#inversion">Ver inversión</a>
-      </div>
-    </div>
-
-    <div class="hero-visual ld" style="--i:2">
-      <figure class="app" aria-labelledby="app-cap">
-        <figcaption id="app-cap" class="sr">Maqueta del dashboard, la pantalla de inicio del panel de administración, con datos de ejemplo.</figcaption>
-        <div class="app-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg class="ic"><use href="#i-lock"/></svg>panel.suclinica.com</span></div>
-        <div class="app-body">
-          <nav class="app-side" aria-label="Menú del panel (maqueta)">
-            <span class="app-logo" aria-hidden="true"><svg class="ic"><use href="#i-arch"/></svg>Su clínica</span>
-            <a class="on" href="#inicio" aria-current="page"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>Dashboard</a>
-            <a href="#panel"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg>Contenido</a>
-            <a href="#tienda"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Tienda</a>
-            <a href="#analisis"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>Análisis</a>
-            <a href="#crm"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>CRM</a>
-            <a class="app-out" href="#web"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>Ver sitio web</a>
-          </nav>
-          <div class="app-main">
-            <div class="app-head">
-              <div><p class="app-hi">Buenos días</p><p class="app-sub">Así va su clínica hoy</p></div>
-              <a class="app-new" href="#crm"><i aria-hidden="true"></i><span id="new-t">3 solicitudes nuevas</span></a>
-            </div>
-            <div class="kpis">
-              <div class="kpi"><p class="kpi-l">Citas de hoy</p><p class="kpi-v">14</p><p class="kpi-d">+3 vs. ayer</p></div>
-              <div class="kpi"><p class="kpi-l">Ventas del mes</p><p class="kpi-v">$8,4 M</p><p class="kpi-d">+12% vs. sept.</p></div>
-              <div class="kpi"><p class="kpi-l">Pacientes nuevos</p><p class="kpi-v">37</p><p class="kpi-d">+9 vs. sept.</p></div>
-              <div class="kpi"><p class="kpi-l">Visitas a la web</p><p class="kpi-v">4.820</p><p class="kpi-d">+18% vs. sept.</p></div>
-            </div>
-            <div class="app-grid">
-              <figure class="card"><figcaption class="card-t">Solicitudes de valoración <span>· por mes</span></figcaption><div id="ch-req"></div></figure>
-              <div class="card agenda">
-                <p class="card-t">Próximas citas</p>
-                <ul>
-                  <li><time>9:00</time><span class="ag-who"><b>Valoración</b><small>Andrea P. · Limpieza facial</small></span><span class="pill ok">Confirmada</span></li>
-                  <li><time>10:30</time><span class="ag-who"><b>Depilación láser</b><small>Paula V. · Sesión 2 de 3</small></span><span class="pill ok">Confirmada</span></li>
-                  <li><time>12:00</time><span class="ag-who"><b>Valoración</b><small>Mariana S. · Peeling químico</small></span><span class="pill wait">Por confirmar</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </figure>
-      <aside class="def" aria-labelledby="t-def">
-        <p class="def-k" id="t-def">¿Qué es un dashboard?</p>
-        <p>Es el <b>tablero de control</b> de su clínica: la pantalla de inicio del panel, donde ve en segundos las citas, las ventas, los pacientes nuevos y las visitas. Desde ahí entra a cada módulo.</p>
-      </aside>
     </div>
   </div>
 </section>
@@ -669,7 +636,7 @@ html.js .rv.in{opacity:1;transform:none}
       </ul>
       <div class="note">
         <p class="note-k">¿Panel de administración o dashboard?</p>
-        <p>El panel de administración es toda la zona privada. El dashboard es su pantalla de inicio: el resumen del día que ve apenas entra.</p>
+        <p>El panel de administración es toda la zona privada. El dashboard es su pantalla de inicio: el resumen del día que ve apenas entra. <a href="#dashboard">Véalo al final</a>.</p>
       </div>
     </div>
 
@@ -781,8 +748,8 @@ html.js .rv.in{opacity:1;transform:none}
         <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Medición de campañas</b> con Google Analytics 4 y el píxel de Meta.</span></li>
       </ul>
       <div class="note">
-        <p class="note-k">Sí, esto también es un dashboard</p>
-        <p>Es un dashboard analítico. El de inicio resume el día; este muestra tendencias para decidir en qué invertir.</p>
+        <p class="note-k">¿Y en qué se diferencia del dashboard?</p>
+        <p>El dashboard resume el día en una sola pantalla; el panel de análisis muestra tendencias para decidir en qué invertir.</p>
       </div>
     </div>
 
@@ -847,6 +814,68 @@ html.js .rv.in{opacity:1;transform:none}
   </div>
 </section>
 
+<!-- ================= TODO JUNTO · DASHBOARD ================= -->
+<section class="blk" id="dashboard" aria-labelledby="t-dash">
+  <div class="wrap blk-grid">
+    <div class="blk-copy rv">
+      <p class="blk-n"><b>+</b>Todo junto</p>
+      <h2 id="t-dash">Dashboard</h2>
+      <p class="tech"><span>Término técnico</span><b>Tablero de control</b></p>
+      <p class="lead">Es la pantalla de inicio del panel. Reúne en una sola vista lo que pasa en los cinco módulos: citas, ventas, pacientes nuevos y visitas. Viene incluido con el panel de administración.</p>
+      <div class="vs">
+        <p class="vs-k">¿En qué se diferencia de lo demás?</p>
+        <dl>
+          <div><dt>Dashboard</dt><dd><b>Ver</b> el resumen del día en una sola pantalla.</dd></div>
+          <div><dt>Panel de administración</dt><dd><b>Editar</b> precios, fotos, promociones y pedidos.</dd></div>
+          <div><dt>Panel de análisis</dt><dd><b>Medir</b> tendencias para decidir en qué invertir.</dd></div>
+          <div><dt>CRM</dt><dd><b>Hacer seguimiento</b> a cada paciente, de la primera consulta a la siguiente cita.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="dash-demo rv">
+      <figure class="app" aria-labelledby="app-cap">
+        <figcaption id="app-cap" class="sr">Maqueta del dashboard, la pantalla de inicio del panel de administración, con datos de ejemplo.</figcaption>
+        <div class="app-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg class="ic"><use href="#i-lock"/></svg>panel.suclinica.com</span></div>
+        <div class="app-body">
+          <nav class="app-side" aria-label="Menú del panel (maqueta)">
+            <span class="app-logo" aria-hidden="true"><svg class="ic"><use href="#i-arch"/></svg>Su clínica</span>
+            <a class="on" href="#dashboard" aria-current="page"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>Dashboard</a>
+            <a href="#panel"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg>Contenido</a>
+            <a href="#tienda"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Tienda</a>
+            <a href="#analisis"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>Análisis</a>
+            <a href="#crm"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>CRM</a>
+            <a class="app-out" href="#web"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>Ver sitio web</a>
+          </nav>
+          <div class="app-main">
+            <div class="app-head">
+              <div><p class="app-hi">Buenos días</p><p class="app-sub">Así va su clínica hoy</p></div>
+              <a class="app-new" href="#crm"><i aria-hidden="true"></i><span id="new-t">3 solicitudes nuevas</span></a>
+            </div>
+            <div class="kpis">
+              <div class="kpi"><p class="kpi-l">Citas de hoy</p><p class="kpi-v">14</p><p class="kpi-d">+3 vs. ayer</p></div>
+              <div class="kpi"><p class="kpi-l">Ventas del mes</p><p class="kpi-v">$8,4 M</p><p class="kpi-d">+12% vs. sept.</p></div>
+              <div class="kpi"><p class="kpi-l">Pacientes nuevos</p><p class="kpi-v">37</p><p class="kpi-d">+9 vs. sept.</p></div>
+              <div class="kpi"><p class="kpi-l">Visitas a la web</p><p class="kpi-v">4.820</p><p class="kpi-d">+18% vs. sept.</p></div>
+            </div>
+            <div class="app-grid">
+              <figure class="card"><figcaption class="card-t">Solicitudes de valoración <span>· por mes</span></figcaption><div id="ch-req"></div></figure>
+              <div class="card agenda">
+                <p class="card-t">Próximas citas</p>
+                <ul>
+                  <li><time>9:00</time><span class="ag-who"><b>Valoración</b><small>Andrea P. · Limpieza facial</small></span><span class="pill ok">Confirmada</span></li>
+                  <li><time>10:30</time><span class="ag-who"><b>Depilación láser</b><small>Paula V. · Sesión 2 de 3</small></span><span class="pill ok">Confirmada</span></li>
+                  <li><time>12:00</time><span class="ag-who"><b>Valoración</b><small>Mariana S. · Peeling químico</small></span><span class="pill wait">Por confirmar</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ================= INVERSIÓN + CIERRE ================= -->
 <section class="night" id="inversion" aria-labelledby="t-inv">
   <div class="wrap">
@@ -864,6 +893,7 @@ html.js .rv.in{opacity:1;transform:none}
           <li><span>03</span>Tienda en línea</li>
           <li><span>04</span>Panel de análisis</li>
           <li><span>05</span>CRM</li>
+          <li><span>+</span>Dashboard incluido</li>
         </ol>
         <div class="tl" role="list" aria-label="Forma de pago">
           <div class="tl-node" role="listitem"><span class="tl-c">50%</span><span class="tl-v">$2.500.000</span><span class="tl-k">Para iniciar</span></div>
@@ -990,7 +1020,9 @@ html.js .rv.in{opacity:1;transform:none}
     });
   }
 
-  columns($('#ch-req'), [['May', 92, 'mayo'], ['Jun', 88, 'junio'], ['Jul', 101, 'julio'], ['Ago', 108, 'agosto'], ['Sep', 103, 'septiembre'], ['Oct', 126, 'octubre']], 'solicitudes');
+  onView([$('.dash-demo')], function(){
+    columns($('#ch-req'), [['May', 92, 'mayo'], ['Jun', 88, 'junio'], ['Jul', 101, 'julio'], ['Ago', 108, 'agosto'], ['Sep', 103, 'septiembre'], ['Oct', 126, 'octubre']], 'solicitudes');
+  }, '0px 0px -15% 0px');
 
   /* ---------- 04 · Panel de análisis ---------- */
   var AN = {
